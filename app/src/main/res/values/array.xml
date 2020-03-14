@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- RecyclerView -->
+    <string-array name="daily_water">
+        <item>Bottle</item>
+        <item>Can</item>
+        <item>Bottle</item>
+        <item>Bottle</item>
+        <item>Can</item>
+        <item>Glass</item>
+        <item>Glass</item>
+        <item>Bottle</item>
+        <item>Can</item>
+        <item>Bottle</item>
+        <item>Glas</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>500ml</item>
+        <item>330ml</item>
+        <item>500ml</item>
+        <item>500ml</item>
+        <item>330ml</item>
+        <item>250ml</item>
+        <item>250ml</item>
+        <item>500ml</item>
+        <item>330ml</item>
+        <item>500ml</item>
+        <item>250ml</item>
+    </string-array>
+</resources>
