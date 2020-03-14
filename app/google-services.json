@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "534828566907",
+    "firebase_url": "https://drain-19e7c.firebaseio.com",
+    "project_id": "drain-19e7c",
+    "storage_bucket": "drain-19e7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534828566907:android:18ff9e550de9ed93fa55de",
+        "android_client_info": {
+          "package_name": "be.uhasselt.drain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534828566907-tegl0aatitiudt9fssbmi92unqb6nvrp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeVfqOkHoiH5tEkhTrWzbmySmLu0HSWhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "534828566907-tegl0aatitiudt9fssbmi92unqb6nvrp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
