@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "534828566907-t365otg410r3itpplk473uusvr0803ne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "be.uhasselt.drain",
+            "certificate_hash": "a7ffde99a1fbad9fa038299c25d989c5e0dd88c8"
+          }
+        },
+        {
           "client_id": "534828566907-tegl0aatitiudt9fssbmi92unqb6nvrp.apps.googleusercontent.com",
           "client_type": 3
         }

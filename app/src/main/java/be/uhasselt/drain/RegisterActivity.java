@@ -16,14 +16,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText userEmail;
-    private EditText userName;
-    private EditText userPassword;
+    private EditText userEmail, userName, userPassword, userAge, userWeight;
     private Button btnRegister;
     private TextView tvDoHaveAccount;
+
+    String email, name, password, age, weight;
 
     private FirebaseAuth firebaseAuth;
 
@@ -70,14 +72,19 @@ public class RegisterActivity extends AppCompatActivity {
         userEmail = (EditText) findViewById(R.id.et_user_email);
         userName = (EditText) findViewById(R.id.et_user_name);
         userPassword = (EditText) findViewById(R.id.et_user_password);
+        userAge = (EditText) findViewById(R.id.et_user_age);
+        userWeight = (EditText) findViewById(R.id.et_user_weight);
+
         btnRegister = (Button) findViewById(R.id.btn_register);
         tvDoHaveAccount = (TextView) findViewById(R.id.do_have_account);
     }
 
     private Boolean validate() {
-        String email = userEmail.getText().toString();
-        String name = userName.getText().toString();
-        String password = userPassword.getText().toString();
+        email = userEmail.getText().toString();
+        name = userName.getText().toString();
+        password = userPassword.getText().toString();;
+        age = userAge.getText().toString();
+        weight = userWeight.getText().toString();
 
         if (email.isEmpty() || name.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
@@ -94,6 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()) {
+                        sendUserData();
                         Toast.makeText(RegisterActivity.this,"Successfully Registered, Verification mail has been sent.", Toast.LENGTH_SHORT).show();
                         firebaseAuth.signOut();
                         finish();
@@ -106,5 +114,12 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void sendUserData() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
+        UserProfile userProfile = new UserProfile(name, email, age, weight);
+        myRef.setValue(userProfile);
     }
 }

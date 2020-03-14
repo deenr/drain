@@ -29,10 +29,7 @@
         android:src="@drawable/dr_logo"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="TODO">
-
-    </ImageView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_user_name"
@@ -48,9 +45,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/icon">
-
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/icon" />
 
     <EditText
         android:id="@+id/et_user_email"
@@ -65,9 +60,7 @@
         android:textColorHint="@color/White"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/et_user_name">
-
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/et_user_name" />
 
     <EditText
         android:id="@+id/et_user_password"
@@ -84,9 +77,46 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/et_user_email">
+        app:layout_constraintTop_toBottomOf="@+id/et_user_email" />
 
-    </EditText>
+    <LinearLayout
+        android:id="@+id/liniear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/et_user_password"
+        tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/et_user_weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_text_bg"
+            android:hint="@string/weight"
+            android:inputType="number"
+            android:padding="16dp"
+            android:textColor="@color/White"
+            android:textColorHint="@color/White" />
+
+        <EditText
+            android:id="@+id/et_user_age"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_text_bg"
+            android:hint="@string/age"
+            android:inputType="number"
+            android:padding="16dp"
+            android:textColor="@color/White"
+            android:textColorHint="@color/White" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_register"
@@ -100,8 +130,7 @@
         android:textColor="@color/Blue3"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/et_user_password">
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/liniear_layout" />
 
     <View
         android:id="@+id/footer_line"
