@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,8 +33,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        toolbar = findViewById(R.id.toolbar);
 
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         navigationView.bringToFront();
@@ -66,6 +67,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_stats:
                 Intent intentStats = new Intent(MainActivity.this, StatisticsActivity.class);
                 startActivity(intentStats);
+                break;
+
+            case  R.id.nav_profile:
+                Intent intentProfile = new Intent(this, ProfileActivity.class);
+                startActivity(intentProfile);
+                break;
+
+            case  R.id.nav_settings:
+                Intent intentSettings = new Intent(this, SettingsActivity.class);
+                startActivity(intentSettings);
                 break;
 
             case R.id.nav_logout:

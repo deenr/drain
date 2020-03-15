@@ -1,12 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/Blue3</item>
         <item name="colorPrimaryDark">@color/Blue1</item>
         <item name="colorAccent">@color/Blue4</item>
-        <item name="android:statusBarColor">#00000000</item>
+        <item name="android:statusBarColor">@color/Blue3</item>
     </style>
 
     <!-- Base application theme. -->
@@ -17,5 +17,23 @@
         <item name="colorAccent">@color/Blue4</item>
         <item name="android:statusBarColor">#00000000</item>
     </style>
+    <!-- Base application theme. -->
+    <style name="NoActionBar2" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/Blue3</item>
+        <item name="colorPrimaryDark">@color/Blue1</item>
+        <item name="colorAccent">@color/Blue4</item>
+        <item name="android:statusBarColor">@color/Blue1</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
