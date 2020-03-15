@@ -21,24 +21,23 @@
         app:layout_constraintGuide_end="24dp" />
 
     <EditText
-        android:id="@+id/change_email"
+        android:id="@+id/et_change_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="136dp"
         android:background="@drawable/profile_text_bg"
         android:hint="@string/email_address"
         android:inputType="textEmailAddress"
         android:padding="16dp"
-        android:textSize="18sp"
         android:textColor="@color/Blue2"
         android:textColorHint="@color/Blue2"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toTopOf="parent">
-    </EditText>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/change_username"
+        android:id="@+id/et_change_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -46,13 +45,12 @@
         android:hint="@string/username"
         android:inputType="textEmailAddress"
         android:padding="16dp"
-        android:textSize="18sp"
         android:textColor="@color/Blue2"
         android:textColorHint="@color/Blue2"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toTopOf="@id/change_email">
-    </EditText>
+        app:layout_constraintTop_toTopOf="@id/et_change_email" />
 
     <LinearLayout
         android:id="@+id/ch_liniear_layout"
@@ -62,11 +60,11 @@
         android:layout_marginRight="24dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/change_username"
+        app:layout_constraintTop_toBottomOf="@+id/et_change_username"
         tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/change_weight"
+            android:id="@+id/et_change_weight"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -75,12 +73,12 @@
             android:hint="@string/weight"
             android:inputType="number"
             android:padding="16dp"
-            android:textSize="18sp"
             android:textColor="@color/Blue2"
-            android:textColorHint="@color/Blue2" />
+            android:textColorHint="@color/Blue2"
+            android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/change_age"
+            android:id="@+id/et_change_age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
@@ -90,9 +88,9 @@
             android:hint="@string/age"
             android:inputType="number"
             android:padding="16dp"
-            android:textSize="18sp"
             android:textColor="@color/Blue2"
-            android:textColorHint="@color/Blue2" />
+            android:textColorHint="@color/Blue2"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <Button
@@ -107,6 +105,5 @@
         android:textColor="@color/White"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/ch_liniear_layout">
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/ch_liniear_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

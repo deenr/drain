@@ -16,6 +16,7 @@
     <string name="do_have_an_account">I do have an account</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="reset_password">Reset password</string>
+    <string name="change_password">Change password</string>
 
     <!-- Navigation Drawer -->
     <string name="home">Home</string>

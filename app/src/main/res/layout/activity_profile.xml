@@ -21,7 +21,7 @@
         app:layout_constraintGuide_end="24dp" />
 
     <TextView
-        android:id="@+id/profile_email"
+        android:id="@+id/et_profile_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -29,16 +29,15 @@
         android:hint="@string/email_address"
         android:inputType="textEmailAddress"
         android:padding="16dp"
-        android:textSize="18sp"
         android:textColor="@color/Blue2"
         android:textColorHint="@color/Blue2"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toTopOf="parent">
-    </TextView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/profile_username"
+        android:id="@+id/et_profile_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -46,13 +45,12 @@
         android:hint="@string/username"
         android:inputType="textEmailAddress"
         android:padding="16dp"
-        android:textSize="18sp"
         android:textColor="@color/Blue2"
         android:textColorHint="@color/Blue2"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toTopOf="@id/profile_email">
-    </TextView>
+        app:layout_constraintTop_toTopOf="@id/et_profile_email" />
 
     <LinearLayout
         android:id="@+id/pr_liniear_layout"
@@ -62,11 +60,11 @@
         android:layout_marginRight="24dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/profile_username"
+        app:layout_constraintTop_toBottomOf="@+id/et_profile_username"
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/profile_weight"
+            android:id="@+id/et_profile_weight"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -75,12 +73,12 @@
             android:hint="@string/weight"
             android:inputType="number"
             android:padding="16dp"
-            android:textSize="18sp"
             android:textColor="@color/Blue2"
-            android:textColorHint="@color/Blue2" />
+            android:textColorHint="@color/Blue2"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/profile_age"
+            android:id="@+id/et_profile_age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
@@ -90,9 +88,9 @@
             android:hint="@string/age"
             android:inputType="number"
             android:padding="16dp"
-            android:textSize="18sp"
             android:textColor="@color/Blue2"
-            android:textColorHint="@color/Blue2" />
+            android:textColorHint="@color/Blue2"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <Button
@@ -107,6 +105,16 @@
         android:textColor="@color/White"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/pr_liniear_layout">
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/pr_liniear_layout" />
+
+    <TextView
+        android:id="@+id/tv_change_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/change_password"
+        android:textColor="@color/Blue2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/btn_click_to_edit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
