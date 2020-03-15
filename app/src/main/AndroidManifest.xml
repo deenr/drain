@@ -9,33 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar2">
-
+        <activity android:name=".ChangeProfileActivity"></activity>
         <activity
             android:name=".ProfileActivity"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".SettingsActivity"
             android:theme="@style/AppTheme" />
-
         <activity android:name=".ForgotPasswordActivity" />
-
         <activity
             android:name=".DetailedListActivity"
             android:label="Details"
             android:parentActivityName=".ListActivity" />
-
         <activity
             android:name=".StatisticsActivity"
             android:theme="@style/AppTheme" />
-
-
         <activity
             android:name=".ListActivity"
             android:theme="@style/AppTheme" />
-
         <activity android:name=".RegisterActivity" />
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,11 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoActionBar" />
-
     </application>
 
 </manifest>
