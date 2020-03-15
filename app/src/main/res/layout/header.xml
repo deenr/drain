@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="175dp"
     android:orientation="vertical"
     android:background="@color/Blue3">
 
@@ -28,7 +28,7 @@
         android:layout_height="50dp"
         android:src="@drawable/dr_water_logo"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="65dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left">
     </ImageView>

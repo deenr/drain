@@ -5,37 +5,21 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:fitsSystemWindows="true"
-    tools:openDrawer="end">
+    tools:openDrawer="start">
+
+    <include
+        layout="@layout/main_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/nav_view"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
         app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu"
-        android:layout_gravity="start">
-
-    </com.google.android.material.navigation.NavigationView>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-            <androidx.appcompat.widget.Toolbar
-                app:title=""
-                android:id="@+id/toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:navigationIcon="@drawable/ic_menu_black"
-                tools:ignore="MissingConstraints" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        app:menu="@menu/main_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
