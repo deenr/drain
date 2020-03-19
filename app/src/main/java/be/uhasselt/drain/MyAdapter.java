@@ -12,48 +12,40 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    String data1[], data2[];
-    int images[];
     Context context;
+    ArrayList<DrinkProfile> drinkProfiles;
 
-    public MyAdapter(Context context, String data1[], String data2[], int images[]){
-        this.context = context;
-        this.data1 = data1;
-        this.data2 = data2;
-        this.images = images;
+    public MyAdapter(Context c, ArrayList<DrinkProfile> p){
+        this.context = c;
+        this.drinkProfiles = p;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.my_row, parent, false);
+        View view = inflater.inflate(R.layout.list_cardview, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.txtTitle.setText(data1[position]);
-        holder.txtDescription.setText(data2[position]);
-        holder.myImage.setImageResource(images[position]);
-
-        holder.listLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DetailedListActivity.class);
-                intent.putExtra("data1", data1[position]);
-                intent.putExtra("data2", data2[position]);
-                intent.putExtra("myImage", images[position]);
-                context.startActivity(intent);
-            }
-        });
+        holder.txtTitle.setText(drinkProfiles.get(position).getName());
+        holder.txtDescription.setText(drinkProfiles.get(position).getDescription());
+        Picasso.get().load(drinkProfiles.get(position).getImage()).into(holder.myImage);
     }
 
     @Override
     public int getItemCount() {
-        return data1.length;
+        return drinkProfiles.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -64,10 +56,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtTitle = itemView.findViewById(R.id.rv_title);
-            txtDescription = itemView.findViewById(R.id.rv_description);
-            myImage = itemView.findViewById(R.id.rv_image);
-            listLayout = itemView.findViewById(R.id.listLayout);
+            txtTitle = (TextView) itemView.findViewById(R.id.rv_title);
+            txtDescription = (TextView) itemView.findViewById(R.id.rv_description);
+            myImage = (ImageView) itemView.findViewById(R.id.rv_image);
+            listLayout = (ConstraintLayout) itemView.findViewById(R.id.listLayout);
         }
     }
 }
