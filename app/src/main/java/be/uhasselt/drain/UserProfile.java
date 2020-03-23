@@ -7,7 +7,6 @@ public class UserProfile {
     public String userEmail;
     public String userAge;
     public String userWeight;
-    public ArrayList<DrinkProfile> drinkProfiles;
 
     public UserProfile() {
     }
@@ -49,20 +48,5 @@ public class UserProfile {
 
     public void setUserWeight(String userWeight) {
         this.userWeight = userWeight;
-    }
-
-    public void addBottle() {
-        DrinkProfile bottle = new DrinkProfile("Bottle", "500");
-        drinkProfiles.add(bottle);
-    }
-
-    public void addGlass() {
-        DrinkProfile glass = new DrinkProfile("Glass", "175");
-        drinkProfiles.add(glass);
-    }
-
-    public void addCan() {
-        DrinkProfile can = new DrinkProfile("Can", "330");
-        drinkProfiles.add(can);
     }
 }

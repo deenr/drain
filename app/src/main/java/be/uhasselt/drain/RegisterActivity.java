@@ -102,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()) {
                         sendUserData();
-                        Toast.makeText(RegisterActivity.this,"Successfully Registered, Verification mail has been sent.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"Successfully registered, verification mail has been sent.", Toast.LENGTH_SHORT).show();
                         firebaseAuth.signOut();
                         finish();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
@@ -118,8 +118,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void sendUserData() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
+
+        DatabaseReference myRefUser = firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid());
         UserProfile userProfile = new UserProfile(name, email, age, weight);
-        myRef.setValue(userProfile);
+        myRefUser.setValue(userProfile);
+
+        DatabaseReference myRefDrink = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid());
+        DrinkProfile drinkProfile = new DrinkProfile(Integer.valueOf(weight));
+        myRefDrink.setValue(drinkProfile);
     }
 }

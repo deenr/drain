@@ -24,7 +24,7 @@ public class ListActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
-    ArrayList<DrinkProfile> list;
+    ArrayList<Drink> list;
     MyAdapter myAdapter;
 
     @Override
@@ -34,14 +34,14 @@ public class ListActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        list = new ArrayList<DrinkProfile>();
+        list = new ArrayList<Drink>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Profiles");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-                    DrinkProfile p = dataSnapshot1.getValue(DrinkProfile.class);
+                    Drink p = dataSnapshot1.getValue(Drink.class);
                     list.add(p);
                 }
                 myAdapter = new MyAdapter(ListActivity.this, list);

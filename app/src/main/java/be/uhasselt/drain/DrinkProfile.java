@@ -1,45 +1,62 @@
 package be.uhasselt.drain;
 
+import java.util.ArrayList;
+
 public class DrinkProfile {
-    private String name;
-    private String description;
-    private String image;
+    private int weight;
+    private int amountPerDay;
+    private ArrayList<Drink> drinkList;
 
     public DrinkProfile() {
     }
 
-    public DrinkProfile(String name, String description) {
-        this.name = name;
-        this.description = description;
+    public DrinkProfile(int weight) {
+        this.weight = weight;
+        this.amountPerDay = 30 * weight;
+        drinkList = new ArrayList<>();
     }
 
-    public DrinkProfile(String name, String description, String image) {
-        this.name = name;
-        this.description = description;
-        this.image = image;
+    public int getWeight() {
+        return weight;
     }
 
-    public String getName() {
-        return name;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getAmountPerDay() {
+        return amountPerDay;
     }
 
-    public String getDescription() {
-        return description;
+    public void setAmountPerDay(int amountPerDay) {
+        this.amountPerDay = amountPerDay;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDrinkList(ArrayList<Drink> drinkList) {
+        this.drinkList = drinkList;
     }
 
-    public String getImage() {
-        return image;
+    public void addBottle() {
+        Drink bottle = new Drink("Bottle", 500, "bottle");
+        drinkList.add(bottle);
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void addGlas() {
+        Drink glas = new Drink("Glas", 200, "glas");
+        drinkList.add(glas);
+    }
+
+    public void addCan() {
+        Drink can = new Drink("Can", 330, "can");
+        drinkList.add(can);
+    }
+
+    @Override
+    public String toString() {
+        return "DrinkProfile{" +
+                "weight=" + weight +
+                ", amountPerDay=" + amountPerDay +
+                ", drinkList=" + drinkList +
+                '}';
     }
 }
