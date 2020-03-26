@@ -20,6 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ChangeProfileActivity extends AppCompatActivity {
 
     private EditText newEmail, newUsername, newWeight, newAge;
@@ -44,8 +47,8 @@ public class ChangeProfileActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        final DatabaseReference databaseReference = firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        final DatabaseReference databaseRefUser = firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid());
+        databaseRefUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
@@ -71,7 +74,14 @@ public class ChangeProfileActivity extends AppCompatActivity {
                 String age = newAge.getText().toString();
 
                 UserProfile userProfile = new UserProfile(name, email, age, weight);
-                databaseReference.setValue(userProfile);
+                databaseRefUser.setValue(userProfile);
+
+                DatabaseReference databaseRefDrink = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid());
+                Map<String, Object> mapWeight = new HashMap<>();
+                mapWeight.put("weight",Integer.parseInt(weight));
+                mapWeight.put("amountPerDay",Integer.parseInt(weight)*30);
+                databaseRefDrink.updateChildren(mapWeight);
+
 
                 firebaseUser.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

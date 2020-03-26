@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText userEmail, userName, userPassword, userAge, userWeight;
@@ -124,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
         myRefUser.setValue(userProfile);
 
         DatabaseReference myRefDrink = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid());
-        DrinkProfile drinkProfile = new DrinkProfile(Integer.valueOf(weight));
+        DrinkProfile drinkProfile = new DrinkProfile(Integer.parseInt(weight));
         myRefDrink.setValue(drinkProfile);
     }
 }

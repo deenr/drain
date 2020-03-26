@@ -14,6 +14,15 @@ public class DrinkProfile {
         this.weight = weight;
         this.amountPerDay = 30 * weight;
         drinkList = new ArrayList<>();
+        addBottle();
+        addCan();
+        addGlass();
+    }
+
+    public DrinkProfile(int weight, ArrayList<Drink> drinkList) {
+        this.weight = weight;
+        this.amountPerDay = 30 * weight;
+        this.drinkList = drinkList;
     }
 
     public int getWeight() {
@@ -32,22 +41,26 @@ public class DrinkProfile {
         this.amountPerDay = amountPerDay;
     }
 
+    public ArrayList<Drink> getDrinkList() {
+        return drinkList;
+    }
+
     public void setDrinkList(ArrayList<Drink> drinkList) {
         this.drinkList = drinkList;
     }
 
     public void addBottle() {
-        Drink bottle = new Drink("Bottle", 500, "bottle");
+        Drink bottle = new Drink("Bottle",500,"bottle");
         drinkList.add(bottle);
     }
 
-    public void addGlas() {
-        Drink glas = new Drink("Glas", 200, "glas");
-        drinkList.add(glas);
+    public void addGlass() {
+        Drink glass = new Drink("Glass",200,"glass");
+        drinkList.add(glass);
     }
 
     public void addCan() {
-        Drink can = new Drink("Can", 330, "can");
+        Drink can = new Drink("Can",330,"can");
         drinkList.add(can);
     }
 

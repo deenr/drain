@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,6 +26,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button btnBottle;
@@ -35,21 +40,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
+    private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
+
+    private DrinkProfile drinkProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading data...");
+        progressDialog.show();
+
         btnBottle = (Button) findViewById(R.id.btn_add_bottle);
         btnGlass = (Button) findViewById(R.id.btn_add_glass);
         btnCan = (Button) findViewById(R.id.btn_add_can);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseDatabase = firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -66,29 +78,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
+        final DatabaseReference myRefDrink = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid());
+        myRefDrink.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                drinkProfile = dataSnapshot.getValue(DrinkProfile.class);
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         btnBottle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference databaseReference = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid());
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        DrinkProfile drinkProfile = dataSnapshot.getValue(DrinkProfile.class);
-                        drinkProfile.addBottle();
-                        //Toast.makeText(MainActivity.this, "Bottle added", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(MainActivity.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                drinkProfile.addBottle();
+                myRefDrink.setValue(drinkProfile);
+                Toast.makeText(MainActivity.this, "Bottle added", Toast.LENGTH_SHORT).show();
             }
         });
 
         btnGlass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                drinkProfile.addGlass();
+                myRefDrink.setValue(drinkProfile);
                 Toast.makeText(MainActivity.this, "Glass added", Toast.LENGTH_SHORT).show();
             }
         });
@@ -96,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnCan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                drinkProfile.addCan();
+                myRefDrink.setValue(drinkProfile);
                 Toast.makeText(MainActivity.this, "Can added", Toast.LENGTH_SHORT).show();
             }
         });

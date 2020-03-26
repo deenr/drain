@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.MenuItem;
@@ -22,21 +23,33 @@ import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
 
+    private ProgressDialog progressDialog;
+
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     ArrayList<Drink> list;
     MyAdapter myAdapter;
+
+    private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading data...");
+        progressDialog.show();
+
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<Drink>();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Profiles");
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        databaseReference = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid()).child("drinkList");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -46,6 +59,7 @@ public class ListActivity extends AppCompatActivity {
                 }
                 myAdapter = new MyAdapter(ListActivity.this, list);
                 recyclerView.setAdapter(myAdapter);
+                progressDialog.dismiss();
             }
 
             @Override
