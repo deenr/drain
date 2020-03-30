@@ -4,6 +4,7 @@ public class Drink {
     private String name;
     private int amount;
     private String image;
+    private int day;
 
     public Drink() {
     }
@@ -13,10 +14,11 @@ public class Drink {
         this.amount = amount;
     }
 
-    public Drink(String name, int amount, String image) {
+    public Drink(String name, int amount, String image, int day) {
         this.name = name;
         this.amount = amount;
         this.image = image;
+        this.day = day;
     }
 
     public String getName() {
@@ -41,5 +43,13 @@ public class Drink {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
     }
 }

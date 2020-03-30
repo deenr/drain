@@ -33,6 +33,8 @@ public class ListActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
 
+    private DrinkProfile drinkProfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +51,30 @@ public class ListActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        final DatabaseReference myRefDrink = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid());
+        myRefDrink.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                drinkProfile = dataSnapshot.getValue(DrinkProfile.class);
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(ListActivity.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         databaseReference = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid()).child("drinkList");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
                     Drink p = dataSnapshot1.getValue(Drink.class);
-                    list.add(p);
+                    assert p != null;
+                    if (p.getDay() == drinkProfile.getDay()) {
+                        list.add(p);
+                    }
                 }
                 myAdapter = new MyAdapter(ListActivity.this, list);
                 recyclerView.setAdapter(myAdapter);

@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnBottle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (drinkProfile.getDrinkList() == null) {
+                    ArrayList<Drink> drinkArrayList = new ArrayList<>();
+                    drinkProfile.setDrinkList(drinkArrayList);
+                }
                 drinkProfile.addBottle();
                 myRefDrink.setValue(drinkProfile);
                 Toast.makeText(MainActivity.this, "Bottle added", Toast.LENGTH_SHORT).show();
@@ -104,6 +108,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnGlass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (drinkProfile.getDrinkList() == null) {
+                    ArrayList<Drink> drinkArrayList = new ArrayList<>();
+                    drinkProfile.setDrinkList(drinkArrayList);
+                }
                 drinkProfile.addGlass();
                 myRefDrink.setValue(drinkProfile);
                 Toast.makeText(MainActivity.this, "Glass added", Toast.LENGTH_SHORT).show();
@@ -113,6 +121,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnCan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (drinkProfile.getDrinkList() == null) {
+                    ArrayList<Drink> drinkArrayList = new ArrayList<>();
+                    drinkProfile.setDrinkList(drinkArrayList);
+                }
                 drinkProfile.addCan();
                 myRefDrink.setValue(drinkProfile);
                 Toast.makeText(MainActivity.this, "Can added", Toast.LENGTH_SHORT).show();
