@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,8 +36,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button btnBottle;
     private Button btnGlass;
     private Button btnCan;
-
-    //Variables
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
@@ -83,6 +82,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 drinkProfile = dataSnapshot.getValue(DrinkProfile.class);
+                Calendar calendar = Calendar.getInstance();
+                int dayNow = calendar.get(Calendar.DAY_OF_YEAR);
+                int dayStart = drinkProfile.getStartDate();
+                int day = (dayNow-dayStart)+1;
+                drinkProfile.setDay(day);
+                myRefDrink.setValue(drinkProfile);
                 progressDialog.dismiss();
             }
 

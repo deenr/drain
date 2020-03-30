@@ -7,15 +7,17 @@ public class DrinkProfile {
     private int amountPerDay;
     private ArrayList<Drink> drinkList;
     private int day;
+    private int startDate;
 
     public DrinkProfile() {
     }
 
-    public DrinkProfile(int weight) {
+    public DrinkProfile(int weight, int startDate) {
         this.weight = weight;
         this.amountPerDay = 30 * weight;
         drinkList = new ArrayList<>();
-        this.day = 0;
+        this.day = 1;
+        this.startDate = startDate;
     }
 
     public DrinkProfile(int weight, ArrayList<Drink> drinkList) {
@@ -72,7 +74,15 @@ public class DrinkProfile {
     }
 
     public void increaseDay() {
-        this.day =+ 1;
+        this.day = day + 1;
+    }
+
+    public int getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(int startDate) {
+        this.startDate = startDate;
     }
 
     @Override

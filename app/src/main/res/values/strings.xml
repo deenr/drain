@@ -37,4 +37,9 @@
     <!-- Main Activity -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Stats Activity -->
+    <string name="start_value">Start</string>
+    <string name="end_value">End</string>
+    <string name="set_value">Set</string>
 </resources>

@@ -3,6 +3,7 @@ package be.uhasselt.drain;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView profileEmail, profileName, profileWeight, profileAge;
     Button btnClickToEdit;
     TextView tvChangePassword;
+    private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -33,6 +35,10 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading data...");
+        progressDialog.show();
 
         profileEmail = (TextView) findViewById(R.id.et_profile_email);
         profileName = (TextView) findViewById(R.id.et_profile_username);
@@ -53,6 +59,8 @@ public class ProfileActivity extends AppCompatActivity {
                 profileName.setText("Name: " + userProfile.getUserName());
                 profileWeight.setText("Weight: " + userProfile.getUserWeight() + " kg");
                 profileAge.setText("Age: " + userProfile.getUserAge());
+
+                progressDialog.dismiss();
             }
 
             @Override

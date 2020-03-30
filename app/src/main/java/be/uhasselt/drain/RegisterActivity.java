@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -126,7 +127,8 @@ public class RegisterActivity extends AppCompatActivity {
         myRefUser.setValue(userProfile);
 
         DatabaseReference myRefDrink = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid());
-        DrinkProfile drinkProfile = new DrinkProfile(Integer.parseInt(weight));
+        Calendar calendar = Calendar.getInstance();
+        DrinkProfile drinkProfile = new DrinkProfile(Integer.parseInt(weight), calendar.get(Calendar.DAY_OF_YEAR));
         myRefDrink.setValue(drinkProfile);
     }
 }
