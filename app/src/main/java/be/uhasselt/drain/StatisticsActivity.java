@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 
 public class StatisticsActivity extends AppCompatActivity {
 
-    private LineGraphSeries<DataPoint> series;
+    private BarGraphSeries<DataPoint> series;
 
     private EditText startValue, endValue;
     private Button betnSetValue;
@@ -98,14 +99,10 @@ public class StatisticsActivity extends AppCompatActivity {
                         y[i - startIntValue] = j;
                     }
 
-                    series = new LineGraphSeries<>(data(x, y));
+                    series = new BarGraphSeries<>(data(x, y));
 
                     // styling series
                     series.setColor(getResources().getColor(R.color.Blue2));
-                    series.setDrawDataPoints(true);
-                    series.setDataPointsRadius(10);
-                    series.setThickness(10);
-
                     graph.addSeries(series);
 
                     // styling graph
