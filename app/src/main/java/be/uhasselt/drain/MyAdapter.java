@@ -20,24 +20,23 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    Context context;
-    ArrayList<Drink> drinkProfile;
+    private LayoutInflater layoutInflater;
+    private ArrayList<Drink> drinkProfile;
 
     public MyAdapter(Context c, ArrayList<Drink> p){
-        this.context = c;
+        this.layoutInflater = LayoutInflater.from(c);
         this.drinkProfile = p;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.list_cardview, parent, false);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view = layoutInflater.inflate(R.layout.list_cardview, viewGroup, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.txtTitle.setText(drinkProfile.get(position).getName());
         holder.txtDescription.setText(drinkProfile.get(position).getAmount() + " ml");
         Picasso.get().load(drinkProfile.get(position).getImage()).into(holder.myImage);
