@@ -1,8 +1,5 @@
 package be.uhasselt.drain;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,7 +19,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -85,7 +84,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Boolean validate() {
         email = userEmail.getText().toString();
         name = userName.getText().toString();
-        password = userPassword.getText().toString();;
+        password = userPassword.getText().toString();
+        ;
         age = userAge.getText().toString();
         weight = userWeight.getText().toString();
 
@@ -99,19 +99,19 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void sendEmailVerification() {
         final FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        if(firebaseUser != null) {
+        if (firebaseUser != null) {
             firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()) {
+                    if (task.isSuccessful()) {
                         sendUserData();
-                        Toast.makeText(RegisterActivity.this,"Successfully registered, verification mail has been sent.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Successfully registered, verification mail has been sent.", Toast.LENGTH_SHORT).show();
                         firebaseAuth.signOut();
                         finish();
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(RegisterActivity.this,"Verification mail hasn't been sent.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Verification mail hasn't been sent.", Toast.LENGTH_SHORT).show();
 
                     }
                 }

@@ -2,7 +2,7 @@ package be.uhasselt.drain;
 
 import java.io.Serializable;
 
-public class Drink implements Serializable{
+public class Drink implements Serializable {
     private String name;
     private int amount;
     private String image;

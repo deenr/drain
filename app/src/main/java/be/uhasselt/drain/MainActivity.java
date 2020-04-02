@@ -1,23 +1,21 @@
 package be.uhasselt.drain;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,8 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private Toolbar toolbar;
     private ProgressDialog progressDialog;
+    private ProgressBar progressBar;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -58,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnBottle = (Button) findViewById(R.id.btn_add_bottle);
         btnGlass = (Button) findViewById(R.id.btn_add_glass);
         btnCan = (Button) findViewById(R.id.btn_add_can);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -85,10 +83,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Calendar calendar = Calendar.getInstance();
                 int dayNow = calendar.get(Calendar.DAY_OF_YEAR);
                 int dayStart = drinkProfile.getStartDate();
-                int day = (dayNow-dayStart)+1;
+                int day = (dayNow - dayStart) + 1;
                 drinkProfile.setDay(day);
                 myRefDrink.setValue(drinkProfile);
                 progressDialog.dismiss();
+                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
             }
 
             @Override
@@ -106,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 drinkProfile.addBottle();
                 myRefDrink.setValue(drinkProfile);
+                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
                 Toast.makeText(MainActivity.this, "Bottle added", Toast.LENGTH_SHORT).show();
             }
         });
@@ -118,7 +118,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     drinkProfile.setDrinkList(drinkArrayList);
                 }
                 drinkProfile.addGlass();
+                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
                 myRefDrink.setValue(drinkProfile);
+                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
                 Toast.makeText(MainActivity.this, "Glass added", Toast.LENGTH_SHORT).show();
             }
         });
@@ -131,7 +133,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     drinkProfile.setDrinkList(drinkArrayList);
                 }
                 drinkProfile.addCan();
+                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
                 myRefDrink.setValue(drinkProfile);
+                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
                 Toast.makeText(MainActivity.this, "Can added", Toast.LENGTH_SHORT).show();
             }
         });
@@ -160,12 +164,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intentStats);
                 break;
 
-            case  R.id.nav_settings:
+            case R.id.nav_settings:
                 Intent intentSettings = new Intent(this, SettingsActivity.class);
                 startActivity(intentSettings);
                 break;
 
-            case  R.id.nav_profile:
+            case R.id.nav_profile:
                 Intent intentProfile = new Intent(this, ProfileActivity.class);
                 startActivity(intentProfile);
                 break;

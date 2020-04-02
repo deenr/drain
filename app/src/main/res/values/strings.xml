@@ -43,7 +43,7 @@
     <string name="end_value">End</string>
     <string name="set_value">Set</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="image">image</string>
 </resources>

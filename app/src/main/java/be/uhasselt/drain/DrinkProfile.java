@@ -51,17 +51,17 @@ public class DrinkProfile {
     }
 
     public void addBottle() {
-        Drink bottle = new Drink("Bottle",500,"https://i.ibb.co/VCsnFf3/ic-bottle.png", getDay());
+        Drink bottle = new Drink("Bottle", 500, "https://i.ibb.co/VCsnFf3/ic-bottle.png", getDay());
         drinkList.add(bottle);
     }
 
     public void addGlass() {
-        Drink glass = new Drink("Glass",200,"https://i.ibb.co/TgZ4QRy/ic-glass.png", getDay());
+        Drink glass = new Drink("Glass", 200, "https://i.ibb.co/TgZ4QRy/ic-glass.png", getDay());
         drinkList.add(glass);
     }
 
     public void addCan() {
-        Drink can = new Drink("Can",330,"https://i.ibb.co/GCdk937/ic-can.png", getDay());
+        Drink can = new Drink("Can", 330, "https://i.ibb.co/GCdk937/ic-can.png", getDay());
         drinkList.add(can);
     }
 
@@ -83,6 +83,14 @@ public class DrinkProfile {
 
     public void setStartDate(int startDate) {
         this.startDate = startDate;
+    }
+
+    public double getAmountDrankInPercentage() {
+        double amount = 0;
+        for (Drink d : drinkList) {
+            amount = amount + d.getAmount();
+        }
+        return (amount / amountPerDay) * 100;
     }
 
     @Override

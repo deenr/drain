@@ -30,8 +30,7 @@
         android:src="@drawable/dr_water_logo"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toTopOf="parent">
-    </ImageView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
         android:id="@+id/et_email"
@@ -46,8 +45,7 @@
         android:textColorHint="@color/White"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/icon">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/icon"/>
 
     <EditText
         android:id="@+id/et_password"
@@ -64,8 +62,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/et_email">
-    </EditText>
+        app:layout_constraintTop_toBottomOf="@+id/et_email"/>
 
     <Button
         android:id="@+id/btn_login"
@@ -79,8 +76,7 @@
         android:textColor="@color/Blue3"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/et_password">
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/et_password"/>
 
     <TextView
         android:id="@+id/tv_forgot_password"

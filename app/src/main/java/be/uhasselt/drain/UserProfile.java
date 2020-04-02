@@ -1,7 +1,5 @@
 package be.uhasselt.drain;
 
-import java.util.ArrayList;
-
 public class UserProfile {
     public String userName;
     public String userEmail;

@@ -8,20 +8,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/main_app_bar">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="24dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="24dp" />
-
     <ProgressBar
         android:id="@+id/progress_bar"
         style="@android:style/Widget.ProgressBar.Horizontal"
@@ -32,27 +18,27 @@
         android:progressTint="@color/Blue2"
         android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="@+id/fg_bottle"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintEnd_toEndOf="@+id/fg_bottle"
+        app:layout_constraintStart_toStartOf="@+id/fg_bottle"
         app:layout_constraintTop_toTopOf="@+id/fg_bottle" />
 
     <ImageView
         android:id="@+id/fg_bottle"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="24sp"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
         android:src="@drawable/fg_bottle"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/fg_bottle">
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progress_bar"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/btn_add_bottle"

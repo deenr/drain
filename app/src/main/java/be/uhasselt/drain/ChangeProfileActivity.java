@@ -1,14 +1,13 @@
 package be.uhasselt.drain;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -78,8 +77,8 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
                 DatabaseReference databaseRefDrink = firebaseDatabase.getReference().child("DrinkLists").child(firebaseAuth.getUid());
                 Map<String, Object> mapWeight = new HashMap<>();
-                mapWeight.put("weight",Integer.parseInt(weight));
-                mapWeight.put("amountPerDay",Integer.parseInt(weight)*30);
+                mapWeight.put("weight", Integer.parseInt(weight));
+                mapWeight.put("amountPerDay", Integer.parseInt(weight) * 30);
                 databaseRefDrink.updateChildren(mapWeight);
 
 
