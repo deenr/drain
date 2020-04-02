@@ -32,7 +32,7 @@ public class ListFragment extends Fragment {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     ArrayList<Drink> list;
-    MyAdapter myAdapter;
+    ListAdapter myAdapter;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -86,7 +86,7 @@ public class ListFragment extends Fragment {
                     }
                 }
                 if (getActivity() != null) {
-                    myAdapter = new MyAdapter(getActivity(), list);
+                    myAdapter = new ListAdapter(getActivity(), list);
                     recyclerView.setAdapter(myAdapter);
                 }
 

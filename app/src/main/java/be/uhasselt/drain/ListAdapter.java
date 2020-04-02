@@ -22,12 +22,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 
     private Context context;
     private ArrayList<Drink> drinkProfile;
 
-    public MyAdapter(Context context, ArrayList<Drink> drinkProfile) {
+    public ListAdapter(Context context, ArrayList<Drink> drinkProfile) {
         this.context = context;
         this.drinkProfile = drinkProfile;
     }
@@ -64,9 +64,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtTitle = (TextView) itemView.findViewById(R.id.rv_title);
-            txtDescription = (TextView) itemView.findViewById(R.id.rv_description);
-            myImage = (ImageView) itemView.findViewById(R.id.rv_image);
+            txtTitle = (TextView) itemView.findViewById(R.id.rv_list_title);
+            txtDescription = (TextView) itemView.findViewById(R.id.rv_list_description);
+            myImage = (ImageView) itemView.findViewById(R.id.rv_list_image);
             listLayout = (ConstraintLayout) itemView.findViewById(R.id.listLayout);
 
             itemView.setOnClickListener(this);

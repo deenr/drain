@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -28,7 +29,12 @@ public class ListActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+        for (int i = 0; i < fragmentManager.getBackStackEntryCount(); ++i) {
+            fragmentManager.popBackStack();
+        }
         super.onBackPressed();
     }
+
+
 }

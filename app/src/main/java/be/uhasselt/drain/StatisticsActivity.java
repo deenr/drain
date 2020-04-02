@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,8 +26,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
     private BarGraphSeries<DataPoint> series;
 
-    private EditText startValue, endValue;
-    private Button betnSetValue;
+    private Button btnSetWeek, btnSetMonth;
     private GraphView graph;
     private ProgressDialog progressDialog;
 
@@ -45,11 +43,9 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
-        startValue = (EditText) findViewById(R.id.et_start_graph_value);
-        endValue = (EditText) findViewById(R.id.et_end_graph_value);
-        betnSetValue = (Button) findViewById(R.id.btn_set_graph_value);
+        btnSetWeek = (Button) findViewById(R.id.btn_set_week);
+        btnSetMonth = (Button) findViewById(R.id.btn_set_month);
         graph = (GraphView) findViewById(R.id.graph_view);
-        graph.setVisibility(View.INVISIBLE);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading data...");
@@ -64,6 +60,8 @@ public class StatisticsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 drinkProfile = dataSnapshot.getValue(DrinkProfile.class);
                 progressDialog.dismiss();
+
+                makeGraph(7);
             }
 
             @Override
@@ -72,45 +70,17 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-        betnSetValue.setOnClickListener(new View.OnClickListener() {
+        btnSetWeek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate()) {
-                    int startIntValue = Integer.parseInt(startValue.getText().toString());
-                    int endIntValue = Integer.parseInt(endValue.getText().toString());
+                makeGraph(7);
+            }
+        });
 
-                    double[] x = new double[endIntValue - startIntValue + 1];
-                    double[] y = new double[endIntValue - startIntValue + 1];
-
-                    for (int i = startIntValue; i <= endIntValue; i++) {
-                        double j = 0;
-                        ArrayList<Drink> drinkArrayList = drinkProfile.getDrinkList();
-                        for (Drink d : drinkArrayList) {
-                            if (d.getDay() == i) {
-                                j = j + d.getAmount();
-                            }
-                        }
-                        x[i - startIntValue] = i;
-                        y[i - startIntValue] = j;
-                    }
-
-                    series = new BarGraphSeries<>(data(x, y));
-
-                    // styling series
-                    series.setColor(getResources().getColor(R.color.Blue2));
-                    graph.addSeries(series);
-
-                    // styling graph
-                    graph.getGridLabelRenderer().setNumHorizontalLabels(endIntValue - startIntValue + 1);
-                    graph.getGridLabelRenderer().setHorizontalAxisTitle("Day");
-                    graph.getViewport().setMinX(series.getLowestValueX());
-                    graph.getViewport().setMaxX(series.getHighestValueX());
-                    graph.getViewport().setMinY(0);
-                    graph.getViewport().setMaxY(series.getHighestValueY() + 500);
-                    graph.getViewport().setYAxisBoundsManual(true);
-                    graph.getViewport().setXAxisBoundsManual(true);
-                    graph.setVisibility(View.VISIBLE);
-                }
+        btnSetMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeGraph(31);
             }
         });
 
@@ -128,33 +98,43 @@ public class StatisticsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private Boolean validate() {
-        String start = startValue.getText().toString();
-        String end = endValue.getText().toString();
+    private void makeGraph(int amount) {
 
-        if (start.isEmpty() || end.isEmpty()) {
-            Toast.makeText(this, "Please enter the values", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (Integer.parseInt(start) <= 0) {
-            Toast.makeText(this, "Start value must be 1 or bigger", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (Integer.parseInt(end) > drinkProfile.getDay()) {
-            Toast.makeText(this, "End value must be less days used", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (Integer.parseInt(end) == Integer.parseInt(start)) {
-            Toast.makeText(this, "Start value and end value can not be the same", Toast.LENGTH_SHORT).show();
-            return false;
-        } else {
-            return true;
+        double[] x = new double[amount];
+        double[] y = new double[amount];
+
+        for (int i = 1; i <= amount; i++) {
+            double j = 0;
+            ArrayList<Drink> drinkArrayList = drinkProfile.getDrinkList();
+            for (Drink d : drinkArrayList) {
+                if (d.getDay() == i) {
+                    j = j + d.getAmount();
+                }
+            }
+            x[i - 1] = i;
+            y[i - 1] = j;
         }
+
+        series = new BarGraphSeries<>(data(x, y, amount));
+
+        // styling series
+        series.setColor(getResources().getColor(R.color.Blue2));
+        graph.addSeries(series);
+
+        // styling graph
+        graph.getViewport().setMinX(series.getLowestValueX() - .5);
+        graph.getViewport().setMaxX(series.getHighestValueX() + .5);
+        graph.getViewport().setMinY(0);
+        graph.getViewport().setMaxY(series.getHighestValueY() + 500);
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.setVisibility(View.VISIBLE);
     }
 
-    public DataPoint[] data(double[] x, double[] y) {
-        int startIntValue = Integer.parseInt(startValue.getText().toString());
-        int endIntValue = Integer.parseInt(endValue.getText().toString());
+    public DataPoint[] data(double[] x, double[] y, int amount) {
 
-        DataPoint[] values = new DataPoint[endIntValue - startIntValue + 1];     //creating an object of type DataPoint[] of size 'n'
-        for (int i = 0; i < endIntValue - startIntValue + 1; i++) {
+        DataPoint[] values = new DataPoint[amount];     //creating an object of type DataPoint[] of size 'n'
+        for (int i = 0; i < amount; i++) {
             DataPoint v = new DataPoint(x[i], y[i]);
             values[i] = v;
             System.out.println(v.toString());

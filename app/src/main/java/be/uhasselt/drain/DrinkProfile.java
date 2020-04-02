@@ -88,9 +88,21 @@ public class DrinkProfile {
     public double getAmountDrankInPercentage() {
         double amount = 0;
         for (Drink d : drinkList) {
-            amount = amount + d.getAmount();
+            if (d.getDay() == getDay()) {
+                amount = amount + d.getAmount();
+            }
         }
         return (amount / amountPerDay) * 100;
+    }
+
+    public int getAmountOfDay(int day) {
+        int amount = 0;
+        for (Drink d : drinkList) {
+            if (d.getDay() == day) {
+                amount = amount + d.getAmount();
+            }
+        }
+        return amount;
     }
 
     @Override

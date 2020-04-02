@@ -22,6 +22,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="24dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
     <ProgressBar
         android:id="@+id/progress_bar"
         style="@android:style/Widget.ProgressBar.Horizontal"
@@ -47,6 +54,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24sp"
@@ -62,7 +70,7 @@
             android:layout_weight="1"
             android:background="@drawable/profile_btn_bg"
             android:padding="16dp"
-            android:text="Bottle"
+            android:text="@string/bottle"
             android:textAllCaps="true"
             android:textColor="@color/White" />
 
@@ -75,7 +83,7 @@
             android:layout_weight="1"
             android:background="@drawable/profile_btn_bg"
             android:padding="16dp"
-            android:text="Glass"
+            android:text="@string/glass"
             android:textAllCaps="true"
             android:textColor="@color/White" />
 
@@ -87,9 +95,88 @@
             android:layout_weight="1"
             android:background="@drawable/profile_btn_bg"
             android:padding="16dp"
-            android:text="Can"
+            android:text="@string/can"
             android:textAllCaps="true"
             android:textColor="@color/White" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24sp"
+        android:text="@string/today"
+        android:textAllCaps="true"
+        android:textColor="@color/Blue2"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <TextView
+        android:id="@+id/tv_today_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 ml / 0 ml"
+        android:textColor="@color/Blue2"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/tv_today" />
+
+    <TextView
+        android:id="@+id/tv_yesterday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24sp"
+        android:text="@string/yesterday"
+        android:textAllCaps="true"
+        android:textColor="@color/Blue2"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/tv_today_stats" />
+
+    <TextView
+        android:id="@+id/tv_yesterday_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 ml / 0 ml"
+        android:textColor="@color/Blue2"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/tv_yesterday" />
+
+
+    <TextView
+        android:id="@+id/tv_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weather"
+        android:textAllCaps="true"
+        android:textColor="@color/Blue2"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toTopOf="@+id/tv_today" />
+
+    <TextView
+        android:id="@+id/tv_weather_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City"
+        android:textColor="@color/Blue2"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weather" />
+
+    <TextView
+        android:id="@+id/tv_weather_degrees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 °C"
+        android:textColor="@color/Blue2"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weather_city" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

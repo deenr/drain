@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,9 +30,8 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Button btnBottle;
-    private Button btnGlass;
-    private Button btnCan;
+    private Button btnBottle, btnGlass, btnCan;
+    private TextView txtTodayStats, txtYesterday, txtYesterdayStats, txtWeatherCity, txtWeatherDegrees;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
@@ -56,6 +56,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnGlass = (Button) findViewById(R.id.btn_add_glass);
         btnCan = (Button) findViewById(R.id.btn_add_can);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+
+        txtTodayStats = (TextView) findViewById(R.id.tv_today_stats);
+        txtYesterday = (TextView) findViewById(R.id.tv_yesterday);
+        txtYesterdayStats = (TextView) findViewById(R.id.tv_yesterday_stats);
+        txtWeatherCity = (TextView) findViewById(R.id.tv_weather_city);
+        txtWeatherDegrees = (TextView) findViewById(R.id.tv_weather_degrees);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -86,8 +92,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 int day = (dayNow - dayStart) + 1;
                 drinkProfile.setDay(day);
                 myRefDrink.setValue(drinkProfile);
+                updateStats();
                 progressDialog.dismiss();
-                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
             }
 
             @Override
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 drinkProfile.addBottle();
                 myRefDrink.setValue(drinkProfile);
-                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
+                updateStats();
                 Toast.makeText(MainActivity.this, "Bottle added", Toast.LENGTH_SHORT).show();
             }
         });
@@ -118,9 +124,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     drinkProfile.setDrinkList(drinkArrayList);
                 }
                 drinkProfile.addGlass();
-                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
                 myRefDrink.setValue(drinkProfile);
-                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
+                updateStats();
                 Toast.makeText(MainActivity.this, "Glass added", Toast.LENGTH_SHORT).show();
             }
         });
@@ -133,9 +138,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     drinkProfile.setDrinkList(drinkArrayList);
                 }
                 drinkProfile.addCan();
-                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
                 myRefDrink.setValue(drinkProfile);
-                progressBar.setProgress((int) drinkProfile.getAmountDrankInPercentage());
+                updateStats();
                 Toast.makeText(MainActivity.this, "Can added", Toast.LENGTH_SHORT).show();
             }
         });
@@ -184,5 +188,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void updateStats() {
+        double amountDrankInPercentage = drinkProfile.getAmountDrankInPercentage();
+        progressBar.setProgress((int) amountDrankInPercentage);
+        
+        int minimumAmount = drinkProfile.getAmountPerDay();
+
+        int today = drinkProfile.getDay();
+        int amountDrankToday = drinkProfile.getAmountOfDay(today);
+        txtTodayStats.setText(amountDrankToday + " ml / " + minimumAmount + " ml");
+
+        int yesterday = drinkProfile.getDay() - 1;
+        int amountDrankYesterday = drinkProfile.getAmountOfDay(yesterday);
+        if (yesterday == 0) {
+            txtYesterday.setVisibility(View.INVISIBLE);
+            txtYesterdayStats.setVisibility(View.INVISIBLE);
+        } else {
+            txtYesterdayStats.setText(amountDrankYesterday + " ml / " + minimumAmount + " ml");
+            txtYesterday.setVisibility(View.VISIBLE);
+            txtYesterdayStats.setVisibility(View.VISIBLE);
+        }
     }
 }

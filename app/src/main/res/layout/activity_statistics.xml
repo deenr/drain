@@ -21,7 +21,7 @@
         app:layout_constraintGuide_end="24dp" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24sp"
@@ -29,47 +29,29 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/et_start_graph_value"
+        <Button
+            android:id="@+id/btn_set_week"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:layout_weight="1"
-            android:background="@drawable/profile_text_bg"
-            android:hint="@string/start_value"
-            android:inputType="number"
+            android:background="@drawable/profile_btn_bg"
             android:padding="16dp"
-            android:textColor="@color/Blue2"
-            android:textColorHint="@color/Blue2"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_end_graph_value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_weight="1"
-            android:background="@drawable/profile_text_bg"
-            android:hint="@string/end_value"
-            android:inputType="number"
-            android:padding="16dp"
-            android:textColor="@color/Blue2"
-            android:textColorHint="@color/Blue2"
-            android:textSize="18sp" />
+            android:text="@string/week"
+            android:textAllCaps="true"
+            android:textColor="@color/White" />
 
         <Button
-            android:id="@+id/btn_set_graph_value"
+            android:id="@+id/btn_set_month"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_weight="1"
             android:background="@drawable/profile_btn_bg"
             android:padding="16dp"
-            android:text="@string/set_value"
+            android:text="@string/month"
             android:textAllCaps="true"
-            android:textColor="@color/White"
-            android:textSize="18sp" />
+            android:textColor="@color/White" />
     </LinearLayout>
 
     <com.jjoe64.graphview.GraphView
@@ -80,6 +62,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,10 +38,21 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="bottle">bottle</string>
+    <string name="glass">Glass</string>
+    <string name="can">Can</string>
+
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="weather">Weather</string>
+
     <!-- Stats Activity -->
     <string name="start_value">Start</string>
     <string name="end_value">End</string>
     <string name="set_value">Set</string>
+
+    <string name="week">Week</string>
+    <string name="month">Month</string>
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
