@@ -91,7 +91,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 int dayStart = drinkProfile.getStartDate();
                 int day = (dayNow - dayStart) + 1;
                 drinkProfile.setDay(day);
-                myRefDrink.setValue(drinkProfile);
+                if(drinkProfile.getDrinkList() != null) {
+                    myRefDrink.setValue(drinkProfile);
+                }
                 updateStats();
                 progressDialog.dismiss();
             }
@@ -191,24 +193,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void updateStats() {
-        double amountDrankInPercentage = drinkProfile.getAmountDrankInPercentage();
-        progressBar.setProgress((int) amountDrankInPercentage);
-        
-        int minimumAmount = drinkProfile.getAmountPerDay();
+        if(drinkProfile.getDrinkList() != null) {
+            double amountDrankInPercentage = drinkProfile.getAmountDrankInPercentage();
+            progressBar.setProgress((int) amountDrankInPercentage);
 
-        int today = drinkProfile.getDay();
-        int amountDrankToday = drinkProfile.getAmountOfDay(today);
-        txtTodayStats.setText(amountDrankToday + " ml / " + minimumAmount + " ml");
+            int minimumAmount = drinkProfile.getAmountPerDay();
 
-        int yesterday = drinkProfile.getDay() - 1;
-        int amountDrankYesterday = drinkProfile.getAmountOfDay(yesterday);
-        if (yesterday == 0) {
-            txtYesterday.setVisibility(View.INVISIBLE);
-            txtYesterdayStats.setVisibility(View.INVISIBLE);
+            int today = drinkProfile.getDay();
+            int amountDrankToday = drinkProfile.getAmountOfDay(today);
+            txtTodayStats.setText(amountDrankToday + " ml / " + minimumAmount + " ml");
+
+            int yesterday = drinkProfile.getDay() - 1;
+            int amountDrankYesterday = drinkProfile.getAmountOfDay(yesterday);
+            if (yesterday == 0) {
+                txtYesterday.setVisibility(View.INVISIBLE);
+                txtYesterdayStats.setVisibility(View.INVISIBLE);
+            } else {
+                txtYesterdayStats.setText(amountDrankYesterday + " ml / " + minimumAmount + " ml");
+                txtYesterday.setVisibility(View.VISIBLE);
+                txtYesterdayStats.setVisibility(View.VISIBLE);
+            }
         } else {
-            txtYesterdayStats.setText(amountDrankYesterday + " ml / " + minimumAmount + " ml");
-            txtYesterday.setVisibility(View.VISIBLE);
-            txtYesterdayStats.setVisibility(View.VISIBLE);
+            int minimumAmount = drinkProfile.getAmountPerDay();
+            txtTodayStats.setText(0 + " ml / " + minimumAmount + " ml");
+
+            int yesterday = drinkProfile.getDay() - 1;
+            if (yesterday == 0) {
+                txtYesterday.setVisibility(View.INVISIBLE);
+                txtYesterdayStats.setVisibility(View.INVISIBLE);
+            }
         }
     }
 }

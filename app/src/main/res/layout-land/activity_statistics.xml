@@ -20,12 +20,20 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="24dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        android:layout_marginRight="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_middle"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -57,9 +65,12 @@
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph_view"
         android:layout_width="0dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="24sp"
+        android:layout_marginBottom="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_middle"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
@@ -69,9 +80,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/graph_view" />
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
