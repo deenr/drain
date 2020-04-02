@@ -1,6 +1,8 @@
 package be.uhasselt.drain;
 
-public class Drink {
+import java.io.Serializable;
+
+public class Drink implements Serializable{
     private String name;
     private int amount;
     private String image;

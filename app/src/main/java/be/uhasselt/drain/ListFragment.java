@@ -2,18 +2,15 @@ package be.uhasselt.drain;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -81,14 +78,14 @@ public class ListFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Drink p = dataSnapshot1.getValue(Drink.class);
                     assert p != null;
                     if (p.getDay() == drinkProfile.getDay()) {
                         list.add(p);
                     }
                 }
-                if (getActivity()!=null){
+                if (getActivity() != null) {
                     myAdapter = new MyAdapter(getActivity(), list);
                     recyclerView.setAdapter(myAdapter);
                 }
@@ -97,13 +94,12 @@ public class ListFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getActivity(),"Value Event Error", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Value Event Error", Toast.LENGTH_LONG).show();
             }
         });
 
         return view;
     }
-
 
 
 }
