@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.ProfilePackage;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +13,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import be.uhasselt.drain.R;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.ListPackage;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -20,6 +20,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import be.uhasselt.drain.Profiles.Drink;
+import be.uhasselt.drain.Profiles.DrinkProfile;
+import be.uhasselt.drain.R;
 
 
 /**

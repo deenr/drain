@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/weather_settings_fragment"
-        android:name="be.uhasselt.drain.SettingsFragment"
+        android:name="be.uhasselt.drain.SettingsPackage.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import be.uhasselt.drain.ListPackage.ListActivity;
+import be.uhasselt.drain.LogRegPackage.LoginActivity;
+import be.uhasselt.drain.ProfilePackage.ProfileActivity;
+import be.uhasselt.drain.Profiles.Drink;
+import be.uhasselt.drain.Profiles.DrinkProfile;
+import be.uhasselt.drain.SettingsPackage.SettingsActivity;
+import be.uhasselt.drain.StatisticsPackage.StatisticsActivity;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LocationListener {
 
     private Button btnBottle, btnGlass, btnCan;

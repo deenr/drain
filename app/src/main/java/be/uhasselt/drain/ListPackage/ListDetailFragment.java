@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.ListPackage;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,6 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.squareup.picasso.Picasso;
+
+import be.uhasselt.drain.Profiles.Drink;
+import be.uhasselt.drain.R;
 
 
 /**

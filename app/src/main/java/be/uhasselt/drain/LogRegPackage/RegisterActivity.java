@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.LogRegPackage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+
+import be.uhasselt.drain.Profiles.DrinkProfile;
+import be.uhasselt.drain.Profiles.UserProfile;
+import be.uhasselt.drain.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

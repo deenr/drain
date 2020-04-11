@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.Profiles;
 
 import java.util.ArrayList;
 

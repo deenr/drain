@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListDetailActivity">
+    tools:context=".ListPackage.ListDetailActivity">
 
     <fragment
         android:id="@+id/detail_fragment"
-        android:name="be.uhasselt.drain.ListDetailFragment"
+        android:name="be.uhasselt.drain.ListPackage.ListDetailFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

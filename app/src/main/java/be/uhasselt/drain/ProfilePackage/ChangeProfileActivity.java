@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.ProfilePackage;
 
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import be.uhasselt.drain.Profiles.UserProfile;
+import be.uhasselt.drain.R;
 
 public class ChangeProfileActivity extends AppCompatActivity {
 

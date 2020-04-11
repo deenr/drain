@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.StatisticsPackage;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -23,6 +23,10 @@ import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
 import java.util.ArrayList;
+
+import be.uhasselt.drain.Profiles.Drink;
+import be.uhasselt.drain.Profiles.DrinkProfile;
+import be.uhasselt.drain.R;
 
 public class StatisticsActivity extends AppCompatActivity {
 

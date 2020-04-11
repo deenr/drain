@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.StatisticsPackage;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,9 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
+
+import be.uhasselt.drain.R;
 
 public class StatAdapter extends RecyclerView.Adapter<StatAdapter.StatViewHolder> {
 

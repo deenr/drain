@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.ListPackage;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -21,6 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import be.uhasselt.drain.Profiles.Drink;
+import be.uhasselt.drain.R;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 

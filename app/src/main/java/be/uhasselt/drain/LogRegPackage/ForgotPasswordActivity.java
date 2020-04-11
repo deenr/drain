@@ -1,4 +1,4 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.LogRegPackage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+
+import be.uhasselt.drain.R;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 

@@ -13,24 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar2">
-        <activity android:name=".ListDetailActivity"></activity>
-        <activity android:name=".ChangePasswordActivity" />
-        <activity android:name=".ChangeProfileActivity" />
+        <activity android:name=".ListPackage.ListDetailActivity"></activity>
+        <activity android:name=".ProfilePackage.ChangePasswordActivity" />
+        <activity android:name=".ProfilePackage.ChangeProfileActivity" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ProfilePackage.ProfileActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".SettingsPackage.SettingsActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".LogRegPackage.ForgotPasswordActivity" />
         <activity
-            android:name=".StatisticsActivity"
+            android:name=".StatisticsPackage.StatisticsActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ListActivity"
+            android:name=".ListPackage.ListActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LogRegPackage.RegisterActivity" />
+        <activity android:name=".LogRegPackage.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,15 +50,15 @@
         </service>
 
         <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
-      See README(https://goo.gl/l4GJaQ) for more. -->
+     See README(https://goo.gl/l4GJaQ) for more. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_launcher_background" />
+            android:resource="@drawable/dr_logo" />
         <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
              notification message. See README(https://goo.gl/6BKBk7) for more. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/colorAccent" />
+            android:resource="@color/Blue5" />
 
 
     </application>

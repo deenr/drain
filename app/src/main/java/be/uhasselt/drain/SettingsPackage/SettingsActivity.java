@@ -1,9 +1,11 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.SettingsPackage;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import be.uhasselt.drain.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

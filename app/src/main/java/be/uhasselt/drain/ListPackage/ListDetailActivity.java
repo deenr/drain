@@ -1,8 +1,10 @@
-package be.uhasselt.drain;
+package be.uhasselt.drain.ListPackage;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import be.uhasselt.drain.R;
 
 public class ListDetailActivity extends AppCompatActivity {
 
