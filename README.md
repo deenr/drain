@@ -4,7 +4,7 @@ This is an Android mobile application project developed in Java using Android St
 ### Description
 Drain is an Android app that allows users to keep track of their daily water intake. The app prompts the user to enter their water intake for the day, and it stores that data in Firebase. The user can then view their daily water intake, as well as their intake history over the past few days.
 
-The app features a user-friendly interface with a clean and minimalistic design. It includes easy-to-use navigation and input fields, as well as a graph to visualize the user's water intake history.
+The app features a user-friendly interface with a clean and minimalistic design [(design can be found here)](https://camo.githubusercontent.com/e9f06f30a27aca65dbcf97ee5f248010ee2a0b774a9da40a513878bd596a5a41/68747470733a2f2f692e6962622e636f2f7a4a79384372502f6170702e706e67). It includes easy-to-use navigation and input fields, as well as a graph to visualize the user's water intake history.
 
 ### Technologies Used
 The Drain app was developed using the following technologies:
